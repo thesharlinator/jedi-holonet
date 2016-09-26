@@ -1,0 +1,274 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "0.0.1",
+        "title": "Jedi Temple Internal Holonet"
+    },
+    "host": "localhost:3000",
+    "basePath": "/",
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/jedi": {
+            "x-swagger-router-controller": "Jedi",
+            "get": {
+                "description": "Returns the list of living Jedi in the Temple to the caller.",
+                "operationId": "listJedi",
+                "tags": [
+                    "jedi"
+                ],
+                "parameters": [
+                    {
+                        "name": "holonet_id",
+                        "in": "query",
+                        "description": "Filter on the Holonet ID (should be unique, equivalent to a GET on /jedi/{holonet_id}) ",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "first_name",
+                        "in": "query",
+                        "description": "Filter on the first name.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "last_name",
+                        "in": "query",
+                        "description": "Filter on the last name.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "lightsaber_color",
+                        "in": "query",
+                        "description": "Filter on lightsaber color.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "lightsaber_style",
+                        "in": "query",
+                        "description": "Filter on lightsaber style.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Filter on the status of the Jedi.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "living",
+                        "in": "query",
+                        "description": "Filter on whether or not the Jedi is alive.",
+                        "required": false,
+                        "type": "boolean"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A list of Jedi.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Jedi"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Add a new Jedi to the Internal Holonet Database.",
+                "operationId": "createJedi",
+                "tags": [
+                    "jedi"
+                ],
+                "parameters": [
+                    {
+                        "name": "jedi",
+                        "in": "body",
+                        "description": "Jedi to add to the Internal Holonet Database",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Jedi"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The newly added Jedi.",
+                        "schema": {
+                            "$ref": "#/definitions/Jedi"
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/jedi/{holonet_id}": {
+            "x-swagger-router-controller": "Jedi",
+            "get": {
+                "description": "Returns the Jedi of the specified Holonet ID.",
+                "operationId": "findJedi",
+                "tags": [
+                    "jedi"
+                ],
+                "parameters": [
+                    {
+                        "name": "holonet_id",
+                        "in": "path",
+                        "description": "ID of the Jedi in the Internal Holonet Database.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Jedi found",
+                        "schema": {
+                            "$ref": "#/definitions/Jedi"
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Deletes a single Jedi based on the ID supplied",
+                "operationId": "deleteJedi",
+                "tags": [
+                    "jedi"
+                ],
+                "parameters": [
+                    {
+                        "name": "holonet_id",
+                        "in": "path",
+                        "description": "ID of Jedi to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Deleted Jedi's information",
+                        "schema": {
+                            "$ref": "#/definitions/Jedi"
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/swagger": {
+            "x-swagger-pipe": "swagger_raw"
+        }
+    },
+    "definitions": {
+        "Jedi": {
+            "required": [
+                "first_name",
+                "last_name",
+                "date_of_birth"
+            ],
+            "properties": {
+                "first_name": {
+                    "description": "The Jedi's first name.",
+                    "type": "string"
+                },
+                "last_name": {
+                    "description": "The Jedi's last / family name.",
+                    "type": "string"
+                },
+                "date_of_birth": {
+                    "description": "The Jedi's date of birth (estimated if unknown)",
+                    "type": "string"
+                },
+                "living": {
+                    "description": "Current status of the Jedi.",
+                    "type": "boolean"
+                },
+                "lightsaber": {
+                    "$ref": "#/definitions/Lightsaber"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Status of the Jedi within the Jedi Order.",
+                    "enum": [
+                        "youngling",
+                        "initiate",
+                        "padawan",
+                        "knight",
+                        "master",
+                        "council_master"
+                    ]
+                },
+                "holonet_id": {
+                    "description": "ID of the Jedi within the Internal Holonet",
+                    "type": "string"
+                }
+            }
+        },
+        "Lightsaber": {
+            "required": [
+                "color",
+                "style"
+            ],
+            "properties": {
+                "color": {
+                    "description": "Color of the lightsaber.",
+                    "type": "string"
+                },
+                "style": {
+                    "description": "Style of the lightsaber.",
+                    "type": "string",
+                    "enum": [
+                        "single_bladed",
+                        "dual_bladed",
+                        "dual_wielding"
+                    ]
+                }
+            }
+        },
+        "ErrorResponse": {
+            "required": [
+                "message"
+            ],
+            "properties": {
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

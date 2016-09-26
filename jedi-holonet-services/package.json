@@ -1,0 +1,27 @@
+{
+  "name": "jedi-holonet-services",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Jedi Holonet API: Internal database of the Jedi Temple",
+  "keywords": [],
+  "author": "The Sharlinator",
+  "license": "",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.12.3", 
+    "connect": "^3.2.0",
+    "swagger-mongoose": "",
+    "cors": "^2.8.1",
+    "js-yaml": "^3.3.0",
+    "mongoose"       : "^4.4.12",
+    "swagger-tools": "0.10.1"
+  },
+  "devDependencies": {
+    "should": "^7.1.0",
+    "supertest": "^1.0.0"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "test": "swagger project test"
+  }
+}

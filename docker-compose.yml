@@ -1,0 +1,45 @@
+version: '2'
+services:
+
+  swagger-editor:
+    image: swaggerapi/swagger-editor:latest
+    ports:
+      - "90:8080"
+    environment:
+      PORT: 8080
+    
+  database:
+     image: mongo:latest
+     ports:
+       - "27017:27017"
+
+  services: 
+    image: node:latest
+    volumes:
+      - ./jedi-holonet-services:/opt/jedi-holonet-services
+    working_dir: /opt/jedi-holonet-services
+    command: sh -c 'npm install; npm install -g nodemon ; nodemon -e js,jade app.js'
+    ports:
+      - "3000:3000"
+    depends_on:
+      - database
+    environment:
+      PORT: 3000
+      APP_URL: "http://localhost:3001/"
+      MONGODB_URI: "mongodb://database:27017/"  
+
+  app: 
+    image: node:latest
+    volumes:
+      - ./jedi-holonet-app:/opt/jedi-holonet-app
+    working_dir: /opt/jedi-holonet-app
+    command: sh -c 'npm install; npm install -g nodemon ; nodemon -e js,jade app.js'
+    ports:
+      - "80:3001" 
+    depends_on:
+      - services
+    environment:
+      PORT: 3001 
+      SERVICES_URL: "http://localhost:3000"
+
+   

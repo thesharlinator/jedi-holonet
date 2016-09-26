@@ -1,0 +1,22 @@
+{
+  "name": "jedi-holonet-app",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Jedi Holonet: Internal database of the Jedi Temple",
+  "keywords": [],
+  "author": "The Sharlinator",
+  "license": "",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.12.3", 
+    "connect": "^3.2.0", 
+    "js-yaml": "^3.3.0"   
+  },
+  "devDependencies": {
+    "should": "^7.1.0",
+    "supertest": "^1.0.0"
+  },
+  "scripts": {
+    "start": "node app.js" 
+  }
+}
