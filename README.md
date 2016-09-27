@@ -8,8 +8,7 @@ For now, the API can list, add, edit and remove Jedi from the Jedi Temple intern
 The GUI simply queries the API to retrieve the number of Jedi in the Temple and display it. 
 
 > **Note**
-> This is just for fun and is not intended to be a guide. Feel free to use it to build your own fun stuff, but it's a work in progress!
-
+> This is just for fun and is not intended to be a guide. Feel free to use it to build your own fun stuff, but it's a work in progress! Many thanks to this page https://scotch.io/tutorials/creating-a-single-page-todo-app-with-node-and-angular and the Swagger UI documentation. 
 
 How to Install
 ------------------
