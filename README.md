@@ -1,14 +1,14 @@
 Jedi Holonet 
 ===================
 
-This project is my personal playground to develop a sample Swagger API with NodeJS and MongoDB, a client AngularJS GUI, and deploy all the components of the applications with Docker Compose. 
+This project is my personal playground to try my hands at a few frameworks. It comprises of: a sample Swagger API with NodeJS, a MongoDB database, a very simple client GUI with AngularJS and Bootstrap, and Docker containers to deploy all those components with Docker Compose. 
  
-The API can list, add, edit and remove Jedi from the Jedi Temple internal database (my sample data of choice ;) )
+For now, the API can list, add, edit and remove Jedi from the Jedi Temple internal database (my sample data of choice... ;) )
 
 The GUI simply queries the API to retrieve the number of Jedi in the Temple and display it. 
 
 > **Note**
-> This is just for fun and is not intended to be a guide. Feel free to use it to build your own stuff, but it's a work in progress!
+> This is just for fun and is not intended to be a guide. Feel free to use it to build your own fun stuff, but it's a work in progress!
 
 
 How to Install
@@ -23,16 +23,16 @@ How to Install
 	```
 				
 - Go to:
-	- The AngularJS graphical user interface will be deployed at: http://localhost/  
+	- The graphical user interface will be deployed at: http://localhost/  
 	- The NodeJS / Swagger API is available at http://localhost:3000/ 
 	- The Swagger UI of your API will be up at http://localhost:3000/docs 
 	
 	
-> The Docker Compose file uses mounted volumes; you might run into some issues on Windows. I've tested it only on Ubuntu 12.04 and Mac OS (El Capitan). 
+> The Docker Compose file uses mounted volumes; you might run into some issues on Windows. I've tested it only on Ubuntu 12.04 and Mac OS X (El Capitan). 
 
-How to use/test the API
+How to use the API (Swagger UI)
 ----------
 
-1. Head over to Swagger UI http://localhost:3000/docs 
+1. Head over to the Swagger UI http://localhost:3000/docs 
 2. You should see the list of available endpoints 
-3. Test them out at your leisure! 
+3. Have fun!
