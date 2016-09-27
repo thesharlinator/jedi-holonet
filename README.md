@@ -8,7 +8,7 @@ The API can list, add, edit and remove Jedi from the Jedi Temple internal databa
 The GUI simply queries the API to retrieve the number of Jedi in the Temple and display it. 
 
 > **Note**
-> This is just for fun and is not intended to be a guide. Feel free to use it to build upo
+> This is just for fun and is not intended to be a guide. Feel free to use it to build your own stuff, but it's a work in progress!
 
 
 How to Install
