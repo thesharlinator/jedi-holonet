@@ -14,7 +14,7 @@ The GUI simply queries the API to retrieve the number of Jedi in the Temple and 
 How to Install
 ------------------
 
-- Install **Docker**  & **Docker Compose** at https://www.docker.com/
+- Install **Docker**  & **Docker Compose** (https://www.docker.com/)
 - Clone the repository into the folder of your choice
 - From within the project folder, launch: 
 
@@ -26,6 +26,9 @@ How to Install
 	- The AngularJS graphical user interface will be deployed at: http://localhost/  
 	- The NodeJS / Swagger API is available at http://localhost:3000/ 
 	- The Swagger UI of your API will be up at http://localhost:3000/docs 
+	
+	
+> The Docker Compose file uses mounted volumes; you might run into some issues on Windows. I've tested it only on Ubuntu 12.04 and Mac OS (El Capitan). 
 
 How to use/test the API
 ----------
